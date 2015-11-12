@@ -1,0 +1,73 @@
+<template name="entry">
+    <div class="container">
+        <div class="company-logo">
+            <img class="logo center-block" src="images/lollipop.png">
+            <h1>New Transaction for User</h1>
+            <h4>User is currently at $100.00</h4>
+        </div>
+
+        <div class="entry-area">
+            <form class="entry-form">
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <h4>Customer Name</h4>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="customer-name" name="name" placeholder="Customer Name">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <h4>Transaction Type</h4>
+                        <select class="form-control" id="transaction-type" name="transactionType">
+                            <option>Cash</option>
+                            <option>Credit Card</option>
+                            <option>Check</option>
+                            <option>In Store Credit</option>
+                        </select>
+                    </div> <!-- End Transaction type -->
+                    <div class="col-sm-4">
+                        <h4>Amount</h4>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">$</div>
+                                <input type="text" class="form-control" id="InputAmount" name="amount" placeholder="">
+                            </div>
+                        </div>
+                    </div> <!-- End Amount -->
+                </div> <!-- End Row -->
+                <h4>Notes</h4>
+                <textarea class="form-control" rows="6"></textarea>
+                <div class="pull-right complete-transaction">
+                    <button type="submit" class="btn btn-warning" id="transaction-complete">Complete Transaction</button>
+                </div>
+            </form> <!-- End Form -->
+        </div>
+
+        <div class="customer-transaction">
+            <h1>Meteor Demo</h1>
+            <p>This area is to show the power of meteor. Meteor uses reactivity and does not need to make a request to
+                the database when displaying a record.  As you add to the entry it will show in the Customer Transactions section.
+                you can even open the page in another browser and it will still work and you will see each transaction added in
+                real time.
+            </p>
+            <div class="entry-item">
+                <div class="panel panel-default">
+                    <div class="panel-heading"> Customer Transactions</div>
+                    <table class="table">
+                        <thead>
+                            <th>Customer Name</th>
+                            <th>Transaction Type</th>
+                            <th>Amount Spent</th>
+                            <th>Id</th>
+                        </thead>
+                        <tbody>
+                            {{#each entryItems}}
+                                {{> entryItem}}
+                            {{/ each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
